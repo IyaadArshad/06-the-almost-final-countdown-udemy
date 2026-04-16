@@ -16,6 +16,7 @@ export default function TimerChallenge({ title, targetTime }) {
         setGameResult(false)
         setFinalRemainingTime(timeRemaining)
         setTimeRemaining(targetTime*1000)
+        setTimerStarted(false)
 
         dialog.current.open();
     }
@@ -28,7 +29,11 @@ export default function TimerChallenge({ title, targetTime }) {
     }
 
     function handleReset () {
+        clearInterval(timer.current)
         setTimeRemaining(targetTime*1000)
+        setTimerStarted(false)
+        setGameResult(null)
+        setFinalRemainingTime(targetTime*1000)
     }
 
     function handleStop() {
